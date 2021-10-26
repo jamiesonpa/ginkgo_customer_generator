@@ -589,7 +589,7 @@ deflivingtherapy = 10
 #now, we have already decided a difficulty risk associated with each organism, but we should also add an input to determine how much weight the user would like
 #to simulate organism difficulty as part of the simulation. We default to 1
 
-deforganism_difficulty_scalar = 1
+deforganism_difficulty_scalar = 1.0
 
 #if the customer is a returning customer, we would like to know, because that will change the risks associated.
 #we want to define a probability that the customer is a returning customer, and we will default that to 30%
