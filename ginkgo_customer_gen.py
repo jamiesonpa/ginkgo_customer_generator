@@ -466,9 +466,13 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 cash_payment = 0
                 if cashonly == True:
                     if size_risk == 1.1:
-                        cash_payment = (random.randint(1,100)/100 * 50000000) + 100000000
+                        cash_payment = (((random.randint(1,100)/100 * 5000000) + 10000000))
+                        if cash_payment > (0.15*size):
+                            cash_payment = 0.1 *size
                     if size_risk == 1:
-                        cash_payment = (random.randint(1,100)/100 * 50000000) + 200000000
+                        cash_payment = (random.randint(1,100)/100 * 5000000) + 20000000
+                        if cash_payment > (0.15*size):
+                            cash_payment = (0.1*size)
                     total_cash_payments = total_cash_payments + (cash_payment)
                     st.write(name + " compensated Ginkgo with a cash payment of $" + str("{:,}".format(round(cash_payment,0))))
                 
