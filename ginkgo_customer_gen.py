@@ -41,31 +41,27 @@ def generate_name():
 
 
     if islastnameconj == False:
-        with open("prefixes.txt") as readfile:
-            prefixes = readfile.read().split("\n")
-            fixed_prefixes = []
-            for prefix in prefixes:
-                # prepref = prefix[0:len(prefix)]
-                endings = ["e","a","o","i","y"]
-                vowel_found = False
-                for end in endings:
-                    if prefix[-1] == end:
-                        vowel_found = True
+        prefixes = ["myo","ophthalmo","partheno","branchio","countero","erythro","proprio","saccharo","thrombo","tropic","arterio","astero","blasto","brachio","brachyo","broncho","carcino","novo","carpalo","cephalo","cerebro","cervico","chondro","contrao","dactylo","oectomy","ognatho","ognosis","hectoro","hetero","hystero","ichthyo","lachryo","myriado","neprho","ornitho","permeao","ophobia","physico","pneumo","pseudo","psycho","stereo","tracheo","oalgia","andro","anemo","antero","antho","arthro","bradyo","caloro","capito","cardio","centio","centro","chloro","chrono","cotylo","cranio","crypto","ocycle","dendro","digito","diplo","dynamo","entomo","extrao","ferro","fracto","glosso","glyco","gymno","hypero","oiasis","infrao","intero","intrao","karyo","kerato","linguo","lumeno","malaco","malleo","micro","millio","morpho","multio","mycelo","necro","nemato","neuro","odonto","oligo","proto","pachyo","paleo","phago","photo","phreno","phyco","pinnio","platyo","pleuro","pulmo","quadro","retro","rhino","rhodo","sclero","script","stello","tachyo","tarso","thallo","thermo","transo","tricho","tropho","ultrao","ventro","xantho","adeno","adipo","aero","agrio","alto","ambio","amebo","amnio","amylo","angio","anteo","antio","atmo","audio","auto","baro","carno","carpo","catao","caudo","chemo","chiro","collo","conio","corpo","cutio","cyano","decao","decio","demio","dento","dermo","dormo","dorso","ecto","equio","euryo","floro","folio","foreo","gluto","graph","gravo","halo","hemio","herbo","herpo","hidro","histo","holo","homo","homo","horto","hydro","hygro","soma","modal","exacto","ninjet","hypho","hypo","kilo","lacto","ligno","mammo","margo","masto","meso","meter","metho","mito","moleo","mono","morto","myco","oculo","omnio","onco","ortho","oscuo","palmo","pento","perio","phylo","pino","polyo","porto","posto","propo","ptero","quino","radio","rhizo","roto","rupto","sapro","sarco","semio","septo","sesso","somno","steno","stylo","telo","terro","turbo","vecto","volv","ovor","xer","alb","ana","ang","aqua","oase","aur","avi","sider","diao","diso","dys","eco","epi","eth","gam","gen","gyro","ign","iso","kel","lato","lipo","loco","luna","malo","medo","mego","meso","mido","mino","miso","myco","naso","neo","nova","nuco","octo","olfo","oleo","onco","opto","orbo","oto","oxyo","pano"]
+        fixed_prefixes = []
+        for prefix in prefixes:
+            # prepref = prefix[0:len(prefix)]
+            endings = ["e","a","o","i","y"]
+            vowel_found = False
+            for end in endings:
+                if prefix[-1] == end:
+                    vowel_found = True
 
-                if vowel_found == True:
-                    newprefix = prefix.capitalize()
-                    newprefix = newprefix.replace("oo","o")
-                    fixed_prefixes.append(newprefix)
-                else:
-                    prepref = prefix[0:len(prefix)]
-                    newprefix = prepref +random.choice(endings)
-                    newprefix = newprefix.replace("oo","o")
-                    fixed_prefixes.append(newprefix.capitalize())
-            prefixes = fixed_prefixes
-
-        with open("suffixes.txt") as readfile:
-            suffixes = readfile.read().split("\n")
-            readfile.close()
+            if vowel_found == True:
+                newprefix = prefix.capitalize()
+                newprefix = newprefix.replace("oo","o")
+                fixed_prefixes.append(newprefix)
+            else:
+                prepref = prefix[0:len(prefix)]
+                newprefix = prepref +random.choice(endings)
+                newprefix = newprefix.replace("oo","o")
+                fixed_prefixes.append(newprefix.capitalize())
+        prefixes = fixed_prefixes
+        suffixes = ["gene","cyte","Dx","sion","bio","omics","ros","Maker","ome","amo","Shift","Fuse","Cure","lytics","lictics","listics","Ion","fication","Bounty","Saur","exis","Thrive","Life","Finity","vero","ntech","Gate","trex","Logic","Gem","genic","Venn","ware","cessory","oxa","bolomics","exa","vexa","tify","ctify","Forge","Max","Prime","vio","vax","vantia","thority","licity","lix","ovi","mat","core","nol","xon","biotic"]
 
         random_name = random.choice(prefixes) + random.choice(suffixes)
         random_name = random_name.replace("oo","o")
@@ -77,19 +73,16 @@ def generate_name():
 
         return random_name
     else:
-        with open("lastnames.txt") as readfile:
-            lastnames = readfile.read().split("\n")
-            lastname1 = random.choice(lastnames)
-            lastname2 = random.choice(lastnames)
-            random_name = lastname1 + " & " + lastname2
+        lastnames = ["Adams","Adams","Murphy","Murphy","Phillips","Phillips","Martin","Martin","Anderson","Anderson","Lee","Lee","Jackson","Jackson","Bell","Bell","Myers","Myers","White","White","Stewart","Stewart","Clark","Clark","Harris","Harris","Perry","Perry","Bailey","Bailey","Watson","Watson","Nelson","Nelson","King","King","Sanders","Sanders","Young","Young","Butler","Butler","Walker","Walker","Davis","Davis","Roberts","Roberts","Green","Green","Hall","Hall","Carter","Carter","Miller","Miller","Morris","Morris","Cox","Cox","Parker","Parker","Reed","Reed","Cooper","Cooper","Rogers","Rogers","Collins","Collins","Moore","Moore","Wood","Wood","Richardson","Richardson","Barnes","Barnes","Smith","Smith","Powell","Powell","Peterson","Peterson","Wilson","Wilson","Lewis","Lewis","Morgan","Morgan","Robinson","Robinson","Turner","Turner","Campbell","Campbell","Hughes","Hughes","Ward","Ward","Cook","Cook","Mitchell","Mitchell","Taylor","Taylor","Wright","Wright","Johnson","Johnson","Bennett","Bennett","Allen","Allen","Jones","Jones","Brooks","Brooks","Fisher","Fisher","Brown","Brown","Thomas","Thomas","Hill","Hill","Price","Price","Scott","Scott","Edwards","Edwards","Ross","Ross","Gray","Gray","Kelly","Kelly","Russell","Russell","Sullivan","Sullivan","Evans","Evans","Baker","Baker","Thompson","Thompson","Jenkins","Jenkins","Williams","Williams","Howard","Howard","Foster","Foster","James","James","Sheridan","Sheridan","Abbott","Abbott","Nicholls","Nicholls","Curtis","Curtis","Nicholas","Nicholas","Thomson","Thomson","Brooke","Brooke","Emery","Emery","Berry","Berry","Bob","Bob","Millard","Millard","Bond","Bond","Fuller","Fuller","Jarvis","Jarvis","Samuel","Samuel","Flynn","Flynn","Boyd","Boyd","Black","Black","Forrest","Forrest","Wade","Wade","Charlton","Charlton"]
+        lastname1 = random.choice(lastnames)
+        lastname2 = random.choice(lastnames)
+        random_name = lastname1 + " & " + lastname2
         return random_name
 
 def generate_description(name, industry):
     #pharma
     if industry == "Biopharma":
-        with open("diseases.txt") as readfile:
-            diseases = readfile.read().split("\n")
-            readfile.close()
+        diseases = ["Acromegaly","Addison disease","Adult respiratory distress syndrome (ARDS)","AIDS","ALS (Amyotrophic lateral sclerosis)","Amyloidosis","Anemia","Iron deficiency","B12 and folate deficiency","Aplastic","myelopthisic","Thalassemia","Sickle Cell","Hemolytic – RH factor","Spherocytosis","Aneurysms","Ankylosing spondylitis (HLA B27)","Arteritis","Giant cell","Polyarteritis nodosa","Takayasu","Hypersensitivity","Arthritis","Asthma","Atherosclerosis","Autoimmune disease","Systemic Lupus Erythmetosus","Sjögren syndrome","Dermatomyositis","Scleroderma","Bleeding disorders","Hemophilia","von Willebrand disease","Thrombocytopenia","Henoch-Schοnlein purpura","Brain edema and herniation","Breast diseases","Fibrocystic change","Fibroadenoma","Mastitis","Bronchiectasis","Calcium-phosphate homeostasis","Cardiomyopathy","Celiac disease","Cholecystitis/lithiasis","Cirrhosis","Congenital heart disease","COPD","Emphysema","Chronic bronchitis","Pneumoconioses","Bronchiolitis obliterans (BOOP)","Coronary Heart Disease","Angina","Creutzfeldt-Jakob disease","Crohn disease","Cushing syndrome","Cystic fibrosis","Dementia","Alzheimer's Diseease","Dermatitis","Dermatomycoses","Diabetes insipidus","Diabetes mellitus","Diarrhea","Disseminated intravascular coagulation","Diverticular disease of G.I. tract","Dyslipoproteinemia","Familial hypercholesterolemia","Dysphagia","Achalasia","Barrett esophagus","Eczema","Encephalitis","Endocarditis","Libbman-Sacks","Enterocolitis","Epilepsy","Erythema multiforme","Esophagitis","Fungal infection","Candidiasis","Aspergillosis","Histoplasmosis","Cryptococcosis","Coccidioidomycosis","Glaucoma","Glomerulonephritis","Gout","Graves disease","Growth abnormalities","Dwarfism","Gigantism","Guillain-Barre Syndrome","Hemochromatosis","Hepatitis","Hodgkin disease","Hydrocephalus","Hypertension","Hypogonadism","Turner syndrome","Klinefelter syndrome","Immune diseases of liver","Autoimmune hepatitis","Infectious mononucleosis","Infertility","Intracranial hemorrhage","Kidney diseases","Leukemia","Lyme disease","Lymphoma","Malabsorption syndromes","Malaria","Meningitis","Multiple myeloma","Multiple sclerosis","Muscular dystrophy","Myasthenia gravis","Myeloproliferative disorders","Myocarditis","Myositis","Dermatomyositis","Polymyositis","Infectious myositis","Nephropathy, peripheral","Obstructive","Interstitial","Amyloid related","Infectious","Neuroblastoma","Neuropathy","Obesity","Osteoarthritis","Otitis media","Ovarian dysfunction","Cysts","Premature ovarian failure","Paget disease of bone","Pancreatitis","Parkinson disease","Pericarditis","Pericardial tamponade","Pharyngitis","Pheochromocytoma","Platelet disorders","Thrombocytopenia","Thrombasthenia","Polycystic kidney disease","Potassium homeostasis disorders","Psoriasis","Pyelonephritis","Renal failure","Retinal diseases","Retinoblastoma","Rheumatic fever","Rheumatoid arthritis","Sarcoidosis","Sepsis","Sexually transmitted diseases","Sodium homeostasis diseases","Spinal cord disease","Trauma","Demyelinating diseases","Polyomyelitis","Spongiform encephalopathies","Syphilis","Systemic lupus erythematosus","Systemic sclerosis (scleroderma)","Thrombosis","Embolism","Hypo/hyper function","Thyroiditis","Toxic shock syndrome","Tranfusion complications","Transplantation","Tuberculosis"]
         terms0 = ["ultracompact ","L-enantiomeric ","R-enantiomeric ","novel mode-of-action ","clinically-tested ","immunogenic ","tumor-infiltrating ","","",""]
         terms1 = ["antisense oligos", "vaccine adjuvants","aptamers","vaccines","gene-therapies","lipid nanoparticles","virus-like particles","monoclonal antibodies", "protein kinase inhibitors", "naturally occuring immunosuppressive molecules", "viral coat proteins","antimicrobial peptides","small molecule therapeutics"]
         description = name + " is a company known for manufacturing " +random.choice(terms0) + random.choice(terms1) + " for the treatment of " + random.choice(diseases).lower() + ". However, they would like to begin manufacturing these therapeutics on a cellular platform."
@@ -275,9 +268,7 @@ def generate_project(industry, size,type_risk_breakdown):
         organism_choice = yeast
     elif organism_type == "Alternative Bacterium":
         letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-        with open("bacterial_species_names.txt") as readfile:
-            species_names = readfile.read().split("\n")
-            readfile.close()
+        species_names = ["aurantis","pierius","simonius","aliius","streptococci","israelii","tumefaciens","coli","radiobacter","anthracis","thuringiensis","subtilis","botulinum","difficile","cepacia","faecium","carotovora"]
         
         species_name = random.choice(species_names)
         letter_name = random.choice(letters) + ". "
@@ -298,9 +289,7 @@ def generate_project(industry, size,type_risk_breakdown):
         organism_choice = random_bacterium
     elif organism_type == "Alternative Fungus":
         letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-        with open("fungal_species_names.txt") as readfile:
-            species_names = readfile.read().split("\n")
-            readfile.close()
+        species_names = ["niger","flavus","augustus","sinensis","cornea","nidulans","rubicundus","birnbaumii","molybites","emodensis","cubensis","azurecens","solani","omnivora","grandis","thermophila","versicolor","bisporus","erinaceous"]
         
         species_name = random.choice(species_names)
         letter_name = random.choice(letters) + ". "
@@ -519,11 +508,6 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
             customer_data.append(overall_risk)
             counter+=1
             customer_results.append(customer_data)
-            with open("customer_results.txt", "a") as writefile:
-                for point in customer_data:
-                    writefile.write(str(point)+",")
-                writefile.write("\n")
-                writefile.close()
     
     equity = 0
     wcagrsum = 0
