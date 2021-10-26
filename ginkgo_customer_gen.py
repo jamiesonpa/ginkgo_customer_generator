@@ -635,10 +635,10 @@ st.sidebar.caption("if the customer is a returning customer, we would like to kn
 returning_customer_prob  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0.01, max_value=1.0, value =defreturning_customer_prob, step=0.01)
 
 st.sidebar.caption("also indicate the associated reduction of total risk with returning customers")
-returning_customer_risk_reduction_coeff  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0.01, max_value=1.0, value =defreturning_customer_risk_reduction_coeff, step=0.01)
+returning_customer_risk_reduction_coeff  = st.sidebar.slider(label = "Returning Customer Risk Reduction Coefficient", min_value = 0.01, max_value=1.0, value =defreturning_customer_risk_reduction_coeff, step=0.01)
 
 st.sidebar.caption("we also define a failure risk modulus which is a number between 1 and 20 that represents how likely it is that failed project iterations lead to more failed project iterations. The higher this number is, the less likely it is that failed iterations indicate that the project is probably going to fail overall")
-failure_risk_modulus  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 1, max_value=20, value =deffailure_risk_modulus)
+failure_risk_modulus  = st.sidebar.slider(label = "Failure Risk Modulus", min_value = 1, max_value=20, value =deffailure_risk_modulus)
 
 
 industry_breakdown = [consumertech, induenv, ag, foodag, pharma, defense]
