@@ -1,2 +1,5 @@
 random
 time
+streamlit
+plotly.express
+pandas
