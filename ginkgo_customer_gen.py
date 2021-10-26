@@ -1,7 +1,6 @@
 from os import write
 import random
 import time
-from termcolor import colored
 import streamlit as st
 
 
@@ -78,7 +77,7 @@ def generate_name():
         lastname1 = random.choice(lastnames)
         lastname2 = random.choice(lastnames)
         colors = ["red","green","blue","yellow","cyan", "magenta"]
-        random_name = colored((lastname1 + " & " + lastname2), random.choice(colors))
+        random_name = (lastname1 + " & " + lastname2)
         return random_name
 
 def generate_description(name, industry):
@@ -88,7 +87,7 @@ def generate_description(name, industry):
         diseases = ["Acromegaly","Addison disease","Adult respiratory distress syndrome (ARDS)","AIDS","ALS (Amyotrophic lateral sclerosis)","Amyloidosis","Anemia","Iron deficiency","B12 and folate deficiency","Aplastic","myelopthisic","Thalassemia","Sickle Cell","Hemolytic – RH factor","Spherocytosis","Aneurysms","Ankylosing spondylitis (HLA B27)","Arteritis","Giant cell","Polyarteritis nodosa","Takayasu","Hypersensitivity","Arthritis","Asthma","Atherosclerosis","Autoimmune disease","Systemic Lupus Erythmetosus","Sjögren syndrome","Dermatomyositis","Scleroderma","Bleeding disorders","Hemophilia","von Willebrand disease","Thrombocytopenia","Henoch-Schοnlein purpura","Brain edema and herniation","Breast diseases","Fibrocystic change","Fibroadenoma","Mastitis","Bronchiectasis","Calcium-phosphate homeostasis","Cardiomyopathy","Celiac disease","Cholecystitis/lithiasis","Cirrhosis","Congenital heart disease","COPD","Emphysema","Chronic bronchitis","Pneumoconioses","Bronchiolitis obliterans (BOOP)","Coronary Heart Disease","Angina","Creutzfeldt-Jakob disease","Crohn disease","Cushing syndrome","Cystic fibrosis","Dementia","Alzheimer's Diseease","Dermatitis","Dermatomycoses","Diabetes insipidus","Diabetes mellitus","Diarrhea","Disseminated intravascular coagulation","Diverticular disease of G.I. tract","Dyslipoproteinemia","Familial hypercholesterolemia","Dysphagia","Achalasia","Barrett esophagus","Eczema","Encephalitis","Endocarditis","Libbman-Sacks","Enterocolitis","Epilepsy","Erythema multiforme","Esophagitis","Fungal infection","Candidiasis","Aspergillosis","Histoplasmosis","Cryptococcosis","Coccidioidomycosis","Glaucoma","Glomerulonephritis","Gout","Graves disease","Growth abnormalities","Dwarfism","Gigantism","Guillain-Barre Syndrome","Hemochromatosis","Hepatitis","Hodgkin disease","Hydrocephalus","Hypertension","Hypogonadism","Turner syndrome","Klinefelter syndrome","Immune diseases of liver","Autoimmune hepatitis","Infectious mononucleosis","Infertility","Intracranial hemorrhage","Kidney diseases","Leukemia","Lyme disease","Lymphoma","Malabsorption syndromes","Malaria","Meningitis","Multiple myeloma","Multiple sclerosis","Muscular dystrophy","Myasthenia gravis","Myeloproliferative disorders","Myocarditis","Myositis","Dermatomyositis","Polymyositis","Infectious myositis","Nephropathy, peripheral","Obstructive","Interstitial","Amyloid related","Infectious","Neuroblastoma","Neuropathy","Obesity","Osteoarthritis","Otitis media","Ovarian dysfunction","Cysts","Premature ovarian failure","Paget disease of bone","Pancreatitis","Parkinson disease","Pericarditis","Pericardial tamponade","Pharyngitis","Pheochromocytoma","Platelet disorders","Thrombocytopenia","Thrombasthenia","Polycystic kidney disease","Potassium homeostasis disorders","Psoriasis","Pyelonephritis","Renal failure","Retinal diseases","Retinoblastoma","Rheumatic fever","Rheumatoid arthritis","Sarcoidosis","Sepsis","Sexually transmitted diseases","Sodium homeostasis diseases","Spinal cord disease","Trauma","Demyelinating diseases","Polyomyelitis","Spongiform encephalopathies","Syphilis","Systemic lupus erythematosus","Systemic sclerosis (scleroderma)","Thrombosis","Embolism","Hypo/hyper function","Thyroiditis","Toxic shock syndrome","Tranfusion complications","Transplantation","Tuberculosis"]
         terms0 = ["ultracompact ","L-enantiomeric ","R-enantiomeric ","novel mode-of-action ","clinically-tested ","immunogenic ","tumor-infiltrating ","","",""]
         terms1 = ["antisense oligos", "vaccine adjuvants","aptamers","vaccines","gene-therapies","lipid nanoparticles","virus-like particles","monoclonal antibodies", "protein kinase inhibitors", "naturally occuring immunosuppressive molecules", "viral coat proteins","antimicrobial peptides","small molecule therapeutics"]
-        description = name + " is a company known for manufacturing " + colored((random.choice(terms0)+ random.choice(terms1)),random.choice(colors)) + " for the treatment of " + colored(random.choice(diseases).lower(),random.choice(colors)) + ". However, they would like to begin manufacturing these therapeutics on a cellular platform."
+        description = name + " is a company known for manufacturing " + (random.choice(terms0)+ random.choice(terms1)) + " for the treatment of " + random.choice(diseases).lower() + ". However, they would like to begin manufacturing these therapeutics on a cellular platform."
 
     #indu/env
 
