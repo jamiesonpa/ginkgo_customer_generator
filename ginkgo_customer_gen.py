@@ -451,28 +451,31 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 st.write("Ginkgo delivered on their milestones and customer specifications!")
                 #if it is a midcap company, we'll say there is a 50% chance that Ginkgo negotiated an equity agreement and 50% chance they negotiated cash
                 cashonly = False
-                if size_risk == 1.1:
-                    cashchanceint = random.randint(1,100)
-                    if cashchanceint > 50:
-                        cashonly = True
+                if size < 100000000:
+                    if size > 20000000:
+                        cashchanceint = random.randint(1,100)
+                        if cashchanceint > 50:
+                            cashonly = True
                 #if it is a largecap company, we'll say there is a 50% chance that Ginkgo negotiated an equity agreement and 50% chance they negotiated cash
-                elif size_risk == 1:
+                elif size > 100000000:
                     cashonly = True
                 else:
                 #if it is a micro/small cap company, its a 0% chance that the negotiated revenue is cash.
                     cashonly = False
             
-                #if the payment was negotiated to be cash, then we can estimate it was a payment worth 100,000,000-150,000,000 for a mid cap company, 200,000,000 for a large cap company
+                #if the payment was negotiated to be cash, then we can estimate it was a payment worth 10,000,000-15,000,000 for a mid cap company, 20,000,000 for a large cap company
                 cash_payment = 0
                 if cashonly == True:
-                    if size_risk == 1.1:
+                    if size < 100000000:
                         cash_payment = (((random.randint(1,100)/100 * 5000000) + 10000000))
                         if cash_payment > (0.15*size):
                             cash_payment = 0.1 *size
-                    if size_risk == 1:
+                    if size > 100000000:
                         cash_payment = (random.randint(1,100)/100 * 5000000) + 20000000
                         if cash_payment > (0.15*size):
                             cash_payment = (0.1*size)
+                    else:
+                        cash_payment = 0.1*size
                     total_cash_payments = total_cash_payments + (cash_payment)
                     st.write(name + " compensated Ginkgo with a cash payment of $" + str("{:,}".format(round(cash_payment,0))))
                 
