@@ -538,12 +538,6 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
     st.write("This cohort of " + str(number_to_gen) + " Ginkgo customers has resulted in a total of $" + str("{:,}".format(total_cash_payments))+" cash payments.")
     st.write("And a total of $" + str("{:,}".format(round(equity,2))) + " of equity which has a " +str((round(wcagr*100,2))) + "% CAGR.")
 
-try:
-    number_to_gen = int(input("How many Ginkgo customers do you want to simulate? (0-100): \n>"))
-    
-except:
-    st.write("error. closing program")
-    quit()
 
 
 
@@ -656,4 +650,7 @@ size_breakdown = [under20, under100, under1000, under100000]
 type_risk_breakdown = [proteinexp, hetbiosynth, celllineopt, microbiome, livingtherapy]
 
 
-ginkgo_customer_generator(1, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff, type_risk_breakdown, organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff)
+simulate = st.sidebar.button("SIMULATE")
+
+if simulate:
+    ginkgo_customer_generator(1, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff, type_risk_breakdown, organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff)
