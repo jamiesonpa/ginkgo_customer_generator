@@ -607,7 +607,7 @@ defreturning_customer_risk_reduction_coeff = .66
 
 deffailure_risk_modulus = 3
 
-st.title("Ginkgo Customer Generator")
+st.title("Ginkgo Customer Generator v0.1")
 
 simulate = st.sidebar.button("SIMULATE")
 st.sidebar.caption("Press this button to simulate a random Ginkgo customer project using the inputs below.")
