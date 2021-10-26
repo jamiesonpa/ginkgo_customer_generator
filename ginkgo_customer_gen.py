@@ -484,10 +484,14 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                         cash_payment = (((random.randint(1,100)/100 * 5000000) + 10000000))
                         if cash_payment > (0.15*size):
                             cash_payment = 0.2 *size
+                        if cash_payment < 5000000:
+                            cash_payment = 5000000
                     if size > 100000000:
                         cash_payment = (random.randint(1,100)/100 * 5000000) + 20000000
                         if cash_payment > (0.15*size):
                             cash_payment = (0.2*size)
+                        if cash_payment < 10000000:
+                            cash_payment = 10000000
                     else:
                         cash_payment = 0.1*size
                     total_cash_payments = total_cash_payments + (cash_payment)
@@ -506,7 +510,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     if cagr_negative == False:
                         cagr = random.randint(0,50)/100
                     else:
-                        cagr = random.randint(-5,-25)/100
+                        cagr = random.randint(-5,-25)/100 
 
                     
                     equity_comp = size*.15
