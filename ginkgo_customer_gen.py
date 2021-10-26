@@ -627,7 +627,7 @@ livingtherapy = st.sidebar.slider(label = "Living Therapy Product Development", 
 
 
 st.sidebar.caption("Define a risk associated with the size of the company. This should be a number between 0 and 1 which represents the risk associated with a smaller company. In other words, for two companies requesting the same project what do we estimate is the biggest increase in overall risk % associated with that smaller size due to resource constraints, default risk, lack of track record, etc. By defualt, I'll estimate that its 20% more risky to take on a smaller company as a partner compared to a larger company, so in that case I would set this to be 0.2.")
-sizerisk_coeff  = st.sidebar.slider(label = "Size Risk Coefficient", min_value = 0, max_value=1, value =defsizerisk_coeff, step=0.01)
+sizerisk_coeff  = st.sidebar.slider(label = "Size Risk Coefficient", min_value = 0.0, max_value=1.0, value =defsizerisk_coeff, step=0.01)
 
 
 st.sidebar.caption("let's assume that https://www.failory.com/blog/startup-failure-rate 60% of startups fail within the first five years if that is the case, then we can use that as the base case for whether the startup will fail or not and reduce from there based on 1. the fact that Ginkgo is lending this startup its resources, and 2. that Ginkgo has vetted this team's leadership and product potential itself with that in mind, define a coefficient to multiply this 45% by that will represent the risk reduction relative to a general startup caused by the association with Ginkgo")
