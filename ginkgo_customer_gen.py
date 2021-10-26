@@ -90,30 +90,32 @@ def generate_description(name, industry):
     #indu/env
 
     if industry == "Industrial/Environmental":
-        terms1 = ["phytoremediation", "environmental cleanup", "direct-air carbon capture", "climate change","water purification"]
-        terms2 = ["bioengineering", "biomechatronics", "ESG-conscious corporate architecture", "biosensors", "first principles engineering", "biohacking","in silico biology", "artificial intelligence", "blockchain", "drone imaging", "ai-enabled analytics", "protein-protein interaction predictions", "molecular modelling"]
+        terms1 = ["phytoremediation", "radioactive waste management", "food wastage", "environmental cleanup", "direct-air carbon capture", "climate change","water purification", "honeybee endangerment","desalination","ocean pollution"]
+        terms2 = ["government subsidized research", "bioengineering", "biomechatronics", "ESG-conscious corporate architecture", "biosensors", "first principles engineering", "biohacking","in silico biology", "artificial intelligence", "blockchain", "drone imaging", "ai-enabled analytics", "protein-protein interaction predictions", "molecular modelling"]
         terms3 = ["tackle", "solve","monetize","revolutionize indstry-wide approaches to","understand"]
-        description = name + " is a company that is trying to " +random.choice(terms3)+" the age-old problem of " + random.choice(terms1) + " using a unique approach to " + random.choice(terms2)+". They would like Ginkgo to help them develop their new product using cell engineering."
+        terms5 = ["unique","novel","ancient","magical","innovative","unusual","orthogonal"]
+        terms4 = ["age-old", "pervasive", "terrible","persistent","decades-old","previously thought-to-be impossible", "enormous"]
+        description = name + " is an environmental/ESG-focused company that is trying to " +random.choice(terms3)+" the " + random.choice(terms4) + " problem of " + random.choice(terms1) + " using a " +random.choice(terms5) + " approach to " + random.choice(terms2)+". They would like Ginkgo to help them develop their new product using cell engineering."
     #agbio
     if industry == "Agricultural Biology":
-        regions = ["rhizosphere","phytosphere","plant holobiome"]
-        microbetypes = ["viruses", "viroids","bacteria","protozoa","fungi","oomycetes"]
-        plant_types = ["monocot","dicot"]
-        enhance_protect = ["enhance plant growth", "enhance plant immunity"]
+        regions = ["rhizosphere-associating","phytosphere-associating","plant holobiome-associating", "phyllosphere-associating", "soil-bourne", "in furrow suspension sprays of"]
+        microbetypes = ["seed coatings", "viruses", "viroids","bacteria","protozoa","fungi","oomycetes","microbial consortia"]
+        plant_types = ["rice","corn","sorghum","wheat","soybeans", "alfalfa","cassava","potatoes", "grapes","cotton","onions","garlic","bananas","oilseed rape","barley"]
+        enhance_protect = ["enhance plant growth", "enhance plant immunity","boost photosynthetic output","induce nitrogen fixation", "induce phosphorous solubilization", "generate bioavailable potassium","chelate soil iron sources","accumulate soilbourne heavy metals"]
 
-        description = name + " is an AgBio company focused on developing " + random.choice(regions) + "-associating " + random.choice(microbetypes) + " that can " + random.choice(enhance_protect) + " in economically-relevant " + random.choice(plant_types) + " crop species. They would like Ginkgo to help with that."
+        description = name + " is an AgBio company focused on developing " + random.choice(regions) + " " +random.choice(microbetypes) + " that can " + random.choice(enhance_protect) + " in " + random.choice(plant_types) + ". They would like Ginkgo to help with that."
     #consumertech
     if industry == "Consumer Technology":
         adjectives = ["incredible", "low-cost", "artisanal", "hand-crafted", "heirloom","authentic","best-in-class","world-renown"]
         sizzler = ["organic", "non-gmo", "ethically-sourced", "locally grown", "gluten-free","lactose-free","hypoallergenic", "all-natural"]
-        products = ["mobile phones", "perfume", "eyeshadow", "lipstick", "shampoo", "hairspray", "eye drops", "yoga mats", "microscope filters"]
+        products = ["smart watches","mobile phones", "perfume", "eyeshadow", "lipstick", "shampoo", "hairspray", "eye drops", "yoga mats", "microscope filters","optical coatings","personal lubricants"]
         description = name + " is a consumer tech company that is known for their "+ random.choice(adjectives) + " " + random.choice(sizzler) + " " + random.choice(products) + ". They would like Ginkgo to help them develop cell lines for a new product suite."
 
 
     #food
     if industry == "Food/Beverage":
-        sizzler = ["organic", "non-gmo", "ethically-sourced", "locally grown", "gluten-free","lactose-free","hypoallergenic", "all-natural"]
-        products = ["hamburgers", "breast milk", "meatballs", "chibben tendies","beer", "kombucha","french fries", "meal replacement shakes","cookies"]
+        sizzler = ["organic", "non-gmo", "ethically-sourced", "locally grown", "gluten-free","farm-to-market","animal welfare-approved","fair trade", "grass fed","hormone-free","antibiotic-free","all-natural", "free range","lactose-free","hypoallergenic", "all-natural"]
+        products = ["hamburgers", "breast milk", "curry paste","tortillas","sourdough","soylent","meatballs", "chibben tendies","beer", "kombucha","french fries", "meal replacement shakes","cookies"]
         description = name + " is a food and beverage company that is trying to develop microbially-produced " + random.choice(sizzler) + " " + random.choice(products)+". They are hoping Ginkgo will help them figure out some issues they're having."
         pass
     #defense
