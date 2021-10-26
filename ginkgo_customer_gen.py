@@ -506,7 +506,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
             # customer_data.append(organism["name"])
             # customer_data.append(str(organism["diffrisk"])+"%")
             # customer_data.append(overall_risk)
-            # counter+=1
+            counter+=1
     #         customer_results.append(customer_data)
     
     # st.write("This customer " + str(1) + " has resulted in a total of $" + str("{:,}".format(total_cash_payments))+" cash payments to Ginkgo.")
