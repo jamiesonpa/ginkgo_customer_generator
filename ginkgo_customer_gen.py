@@ -433,12 +433,11 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     totalfailurecount +=1
                     if verbose == True:
                         st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
-                if totalfailurecount > 20:
+                if totalfailurecount > 25:
+                    projectfailure = True
                     break
             
             while y2successful == False:
-                if totalfailurecount > 20:
-                    break
                 if failurecount > 10:
                     failurecount = 9
                 randomrating = (random.randint(totalfailurecount*2,1000)/10) * (1-(failurecount/failure_risk_modulus))
