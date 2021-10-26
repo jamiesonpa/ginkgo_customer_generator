@@ -384,7 +384,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
         adjusted_organism_difficulty_risk = (1-(1-organism["diffrisk"] * organism_difficulty_scalar))/100
         st.write("This company wants Ginkgo to use the organism " + organism["name"] + " for this project. " + organism["name"].capitalize() + " is a " + organism["domain"] + " with a doubling time of " + str(organism["doubling time"])+" minutes.\n")
         st.write(organism["name"].capitalize()+ " is an organism which has a " + organism["td"] + " transformation difficulty, has sterility requirements that make working with it in the lab " + organism["sterility reqs"] + ", has a genome annotation that makes working with it " + organism["gapf"]+", and because of how robust/weak it is in the face of shearing forces, handling it in the lab is " + organism["hd"]+".\n")
-        st.write(organism["name"].capitalize() + ' has an associated ' + str(round(adjusted_organism_difficulty_risk,2)) + r'% organism difficulty risk, where 100% is the highest risk rating and 0% is the lowest risk rating.' +"\n")
+        st.write(organism["name"].capitalize() + ' has an associated ' + str(round(adjusted_organism_difficulty_risk*100,2)) + r'% organism difficulty risk, where 100% is the highest risk rating and 0% is the lowest risk rating.' +"\n")
         st.write("The project is your basic " + specs.lower() + " type of thing. These kinds of projects have an associated " + str(round(project_risk*100,2)) + '%' + " failure risk. \n")   
 
         overall_risk_num = (((project_risk + adjusted_organism_difficulty_risk)/2)*returning_customer_risk_coefficient*size_risk*industry_risk)
@@ -507,7 +507,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
 
                     
                     equity_comp = size*.15
-                    st.write("This company has compensated Ginkgo for its services with $" + str("{:,}".format(size*.15)) + " worth of its equity, which has a " + str(cagr*100) + r"% CAGR")
+                    st.write("This company has compensated Ginkgo for its services with $" + str("{:,}".format((round(size*.15,2)))) + " worth of its equity, which has a " + str(cagr*100) + r"% CAGR")
                     total_equity_compensations.append((equity_comp,cagr))
 
             st.write("-----------------------SIMULATION COMPLETE-------------------")
