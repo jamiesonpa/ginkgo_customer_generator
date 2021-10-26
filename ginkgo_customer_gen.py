@@ -325,7 +325,7 @@ def generate_project(industry, size,type_risk_breakdown):
     project = [organism_choice, project_type, project_type_risk]
     return project
 
-def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff,type_risk_breakdown,organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus):
+def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff,type_breakdown,organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus):
 
     total_cash_payments = 0
     total_equity_compensations = []
@@ -349,7 +349,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 returning_customer = True
                 returning_customer_risk_coefficient = returning_customer_risk_reduction_coeff
 
-        project = generate_project(industry,size,type_risk_breakdown) #generate the project
+        project = generate_project(industry,size,type_breakdown) #generate the project
         organism = project[0]
         specs = project[1]
         project_risk = project[2]
@@ -385,10 +385,12 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
         st.write("This company wants Ginkgo to use the organism " + organism["name"] + " for this project. " + organism["name"].capitalize() + " is a " + organism["domain"] + " with a doubling time of " + str(organism["doubling time"])+" minutes.\n")
         st.write(organism["name"].capitalize()+ " is an organism which has a " + organism["td"] + " transformation difficulty, has sterility requirements that make working with it in the lab " + organism["sterility reqs"] + ", has a genome annotation that makes working with it " + organism["gapf"]+", and because of how robust/weak it is in the face of shearing forces, handling it in the lab is " + organism["hd"]+".\n")
         st.write(organism["name"].capitalize() + ' has an associated ' + str(round(adjusted_organism_difficulty_risk,2)) + r'% organism difficulty risk, where 100% is the highest risk rating and 0% is the lowest risk rating.' +"\n")
-        st.write("The project is your basic " + specs.lower() + " type of thing. These kinds of projects have an associated " + str(project[2]) + '%' + " failure risk. \n")   
+        st.write("The project is your basic " + specs.lower() + " type of thing. These kinds of projects have an associated " + str(round(project_risk*100,2)) + '%' + " failure risk. \n")   
 
-        overall_risk_num = (((project[2] + adjusted_organism_difficulty_risk)/2)*returning_customer_risk_coefficient*size_risk*industry_risk)
-        overall_risk = str(round((((project[2] + adjusted_organism_difficulty_risk)/2)*returning_customer_risk_coefficient*size_risk*industry_risk),2))+"%"
+        overall_risk_num = (((project_risk + adjusted_organism_difficulty_risk)/2)*returning_customer_risk_coefficient*size_risk*industry_risk)
+
+                
+        overall_risk = str(round((((project_risk + adjusted_organism_difficulty_risk)/2)*returning_customer_risk_coefficient*size_risk*industry_risk),2))+"%"
         st.write("This project has approximately a " + overall_risk + " overall risk of failure.\n")
 
         simready = "y"
@@ -645,7 +647,7 @@ failure_risk_modulus  = st.sidebar.slider(label = "Failure Risk Modulus", min_va
 
 industry_breakdown = [consumertech, induenv, ag, foodag, pharma, defense]
 size_breakdown = [under20, under100, under1000, under100000]
-type_risk_breakdown = [proteinexp, hetbiosynth, celllineopt, microbiome, livingtherapy]
+type_risk_breakdown = [proteinexp/100, hetbiosynth/100, celllineopt/100, microbiome/100, livingtherapy/100]
 
 
 simulate = st.sidebar.button("SIMULATE")
