@@ -2,6 +2,7 @@ from os import write
 import random
 import time
 import streamlit as st
+import math
 
 
 def generate_size(size_breakdown):
@@ -358,7 +359,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
         
 
         #simulate the customer
-        st.write("\n\n-----------------------BEGIN CUSTOMER SIMULATION" + str(counter+1)+"--------------------")
+        st.write("\n\n-----------------------BEGIN CUSTOMER SIMULATION--------------------")
         st.write(name + " is a company in the " + industry + " industry with a $" + "{:,}".format(size) + " market capitalization.\n")
 
         #here, we associate a risk with the size of the company. This is because companies which have fewer resources are less likely to be capable of scaling up the 
@@ -626,14 +627,6 @@ under100 = st.sidebar.slider(label = "Market Cap < $100,000,000", min_value = 0,
 under1000 = st.sidebar.slider(label = "Market Cap < $1,000,000,000", min_value = 0, max_value=100, value =defunder1000)
 under100000 = st.sidebar.slider(label = "Market Cap < $100,000,000,000", min_value = 0, max_value=100, value =defunder100000)
 
-st.sidebar.subheader("Project Type Composition (must add up to 100")
-proteinexp = st.sidebar.slider(label = "Protein Overexpression Optimization", min_value = 0, max_value=100, value =defproteinexp)
-hetbiosynth = st.sidebar.slider(label = "Heterologous Expression of Biosynthetic Pathway", min_value = 0, max_value=100, value =defhetbiosynth)
-celllineopt = st.sidebar.slider(label = "Cell Line Optimization", min_value = 0, max_value=100, value =defcelllineopt)
-microbiome = st.sidebar.slider(label = "Microbiome Product Development", min_value = 0, max_value=100, value =defmicrobiome)
-livingtherapy = st.sidebar.slider(label = "Living Therapy Product Development", min_value = 0, max_value=100, value =deflivingtherapy)
-
-
 st.sidebar.caption("Define a risk associated with the size of the company. This should be a number between 0 and 1 which represents the risk associated with a smaller company. In other words, for two companies requesting the same project what do we estimate is the biggest increase in overall risk % associated with that smaller size due to resource constraints, default risk, lack of track record, etc. By defualt, I'll estimate that its 20% more risky to take on a smaller company as a partner compared to a larger company, so in that case I would set this to be 0.2.")
 sizerisk_coeff  = st.sidebar.slider(label = "Size Risk Coefficient", min_value = 0.01, max_value=1.0, value =defsizerisk_coeff, step=0.01)
 
@@ -657,7 +650,7 @@ failure_risk_modulus  = st.sidebar.slider(label = "Failure Risk Modulus", min_va
 
 industry_breakdown = [consumertech, induenv, ag, foodag, pharma, defense]
 size_breakdown = [under20, under100, under1000, under100000]
-type_risk_breakdown = [proteinexp/100, hetbiosynth/100, celllineopt/100, microbiome/100, livingtherapy/100]
+type_risk_breakdown = [defproteinexp/100, defhetbiosynth/100, defcelllineopt/100, defmicrobiome/100, deflivingtherapy/100]
 
 
 if simulate:
