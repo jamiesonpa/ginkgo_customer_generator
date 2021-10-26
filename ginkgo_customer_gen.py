@@ -387,7 +387,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
         st.write(organism["name"].capitalize() + ' has an associated ' + str(round(adjusted_organism_difficulty_risk*100,2)) + r'% organism difficulty risk, where 100% is the highest risk rating and 0% is the lowest risk rating.' +"\n")
         st.write("The project is your basic " + specs.lower() + " type of thing. These kinds of projects have an associated " + str(round(project_risk*100,2)) + '%' + " failure risk. \n")   
 
-        overall_risk_num = (((project_risk + adjusted_organism_difficulty_risk)/2)*returning_customer_risk_coefficient*size_risk*industry_risk)
+        overall_risk_num = (((project_risk + adjusted_organism_difficulty_risk)/2)*returning_customer_risk_coefficient*size_risk*industry_risk)*100
 
         # st.write("project risk: " + str(project_risk))
         # st.write("adj_organism diff risk: " + str(adjusted_organism_difficulty_risk))
@@ -396,7 +396,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
         # st.write("industry risk: " + str(industry_risk))
 
 
-        risk_display_num = overall_risk_num
+        risk_display_num = overall_risk_num/100
                 
         overall_risk = str((round(risk_display_num*100,2)))+"%"
         st.write("This project has approximately a " + overall_risk + " per-iteration failure risk.\n")
