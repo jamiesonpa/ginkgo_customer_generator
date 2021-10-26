@@ -649,4 +649,4 @@ type_risk_breakdown = [proteinexp, hetbiosynth, celllineopt, microbiome, livingt
 simulate = st.sidebar.button("SIMULATE")
 
 if simulate:
-    ginkgo_customer_generator(1, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff, type_risk_breakdown, organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff)
+    ginkgo_customer_generator(1, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff, type_risk_breakdown, organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus)
