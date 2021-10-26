@@ -470,7 +470,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     if size_risk == 1:
                         cash_payment = (random.randint(1,100)/100 * 50000000) + 200000000
                     total_cash_payments = total_cash_payments + (cash_payment)
-                    st.write(name + " compensated Ginkgo with a cash payment of $" + str(cash_payment))
+                    st.write(name + " compensated Ginkgo with a cash payment of $" + str("{:,}".format(round(cash_payment,0))))
                 
                 if cashonly == False:
                     #first check to see if this company just straight up fails
