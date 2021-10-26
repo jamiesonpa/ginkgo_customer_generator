@@ -604,7 +604,7 @@ defreturning_customer_risk_reduction_coeff = .66
 #we also define a failure risk modulus which is a number between 1 and 20 that represents how likely it is that failed project iterations lead to more failed project iterations.
 #the higher this number is, the less likely it is that failed iterations indicate that the project is probably going to fail overall
 
-deffailure_risk_modulus = 10
+deffailure_risk_modulus = 3
 
 st.title("Ginkgo Customer Generator")
 
