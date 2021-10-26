@@ -245,7 +245,7 @@ def generate_project(industry, size,type_risk_breakdown):
     ecoli["genome size"] = 5.5
     ecoli["gapf"] = difficulties[0]
     ecoli["hd"] = difficulties[0]
-    ecoli["diffrisk"] = (((3+3+3+3+(10*(20/2000)))/5)*10)
+    ecoli["diffrisk"] = (((3+3+3+3+(10*(500/2000)))/5)*10)
 
     yeast = {}
     yeast["name"] = "yeast"
@@ -256,7 +256,7 @@ def generate_project(industry, size,type_risk_breakdown):
     yeast["genome size"] = 12
     yeast["gapf"] = difficulties[0]
     yeast["hd"] = difficulties[0]
-    yeast["diffrisk"] = (((3+3+6+6+(10*(90/2000)))/5)*10)
+    yeast["diffrisk"] = (((3+3+6+6+(10*(500/2000)))/5)*10)
 
 
     organism_type = random.choice(organism_types)
@@ -287,7 +287,7 @@ def generate_project(industry, size,type_risk_breakdown):
         dr3 = random.randint(1,2)
         random_bacterium["gapf"] = choices1[dr3-1]
         random_bacterium["hd"] = "easy"
-        random_bacterium["diffrisk"] = (((3*dr1)+(3*dr2)+(3*dr3)+3+(10*(random_bacterium["doubling time"]/2000)))/5)*10
+        random_bacterium["diffrisk"] = (((3*dr1)+(3*dr2)+(3*dr3)+3+(10*(500/2000)))/5)*10
         organism_choice = random_bacterium
     elif organism_type == "Alternative Fungus":
         letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
@@ -310,7 +310,7 @@ def generate_project(industry, size,type_risk_breakdown):
         random_fungus["gapf"] = choices1[dr3-2]
         dr4 = random.randint(1,2)
         random_fungus["hd"] = choices1[dr4-1]
-        random_fungus["diffrisk"] = (((3*dr1)+(3*dr2)+(3*dr3)+(3*dr4)+(10*(random_fungus["doubling time"]/2000)))/5)*10
+        random_fungus["diffrisk"] = (((3*dr1)+(3*dr2)+(3*dr3)+(3*dr4)+(10*(500/2000)))/5)*10
         organism_choice = random_fungus
     else:
         st.write("couldnt find organism")
@@ -541,9 +541,6 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
     #     st.write("This customer has awarded Ginkgo $" + str("{:,}".format(round(equity,2))) + " of equity which has a " +str((round(wcagr*100,2))) + "% CAGR.")
 
 
-
-
-
 #we need to define important simulation inputs
 
 # here we define the % composition breakdown of industry type by customer
@@ -610,6 +607,7 @@ deffailure_risk_modulus = 1
 st.title("Ginkgo Customer Generator")
 
 simulate = st.sidebar.button("SIMULATE")
+st.sidebar.caption("Press this button to simulate a random Ginkgo customer project using the inputs below.")
 
 st.sidebar.header("Inputs:\n")
 st.sidebar.subheader("Customer Type Composition (must add up to 100)")
