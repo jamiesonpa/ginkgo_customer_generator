@@ -494,6 +494,8 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                             cash_payment = 10000000
                     else:
                         cash_payment = 0.1*size
+                        if cash_payment < 10000000:
+                            cash_payment = 10000000 + (10000000*(random.randint(50,100)/100))
                     total_cash_payments = total_cash_payments + (cash_payment)
                     st.write(name + " compensated Ginkgo with a cash payment of $" + str("{:,}".format(round(cash_payment,0))))
                 
