@@ -381,7 +381,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
         if returning_customer == True:
             st.write(name + " has done business with Ginkgo before, and therefore the overall risk associated with this project is lower.\n")
         st.write(descript+"\n")
-        adjusted_organism_difficulty_risk = 1-(1-organism["diffrisk"] * organism_difficulty_scalar)
+        adjusted_organism_difficulty_risk = (1-(1-organism["diffrisk"] * organism_difficulty_scalar))/100
         st.write("This company wants Ginkgo to use the organism " + organism["name"] + " for this project. " + organism["name"].capitalize() + " is a " + organism["domain"] + " with a doubling time of " + str(organism["doubling time"])+" minutes.\n")
         st.write(organism["name"].capitalize()+ " is an organism which has a " + organism["td"] + " transformation difficulty, has sterility requirements that make working with it in the lab " + organism["sterility reqs"] + ", has a genome annotation that makes working with it " + organism["gapf"]+", and because of how robust/weak it is in the face of shearing forces, handling it in the lab is " + organism["hd"]+".\n")
         st.write(organism["name"].capitalize() + ' has an associated ' + str(round(adjusted_organism_difficulty_risk,2)) + r'% organism difficulty risk, where 100% is the highest risk rating and 0% is the lowest risk rating.' +"\n")
@@ -389,14 +389,14 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
 
         overall_risk_num = (((project_risk + adjusted_organism_difficulty_risk)/2)*returning_customer_risk_coefficient*size_risk*industry_risk)
 
-        st.write("project risk: " + str(project_risk))
-        st.write("adj_organism diff risk: " + str(adjusted_organism_difficulty_risk))
-        st.write("returning_customer_risk_coefficient: " + str(returning_customer_risk_coefficient))
-        st.write("size risk: " + str(size_risk))
-        st.write("industry risk: " + str(industry_risk))
+        # st.write("project risk: " + str(project_risk))
+        # st.write("adj_organism diff risk: " + str(adjusted_organism_difficulty_risk))
+        # st.write("returning_customer_risk_coefficient: " + str(returning_customer_risk_coefficient))
+        # st.write("size risk: " + str(size_risk))
+        # st.write("industry risk: " + str(industry_risk))
 
 
-        risk_display_num = 1-overall_risk_num
+        risk_display_num = overall_risk_num
                 
         overall_risk = str((round(risk_display_num*100,2)))+"%"
         st.write("This project has approximately a " + overall_risk + " per-iteration failure risk.\n")
@@ -609,6 +609,8 @@ deffailure_risk_modulus = 1
 
 st.title("Ginkgo Customer Generator")
 
+simulate = st.sidebar.button("SIMULATE")
+
 st.sidebar.header("Inputs:\n")
 st.sidebar.subheader("Customer Type Composition (must add up to 100)")
 consumertech = st.sidebar.slider(label = "Consumer Tech%", min_value = 0, max_value=100, value =defconsumertech)
@@ -657,8 +659,6 @@ industry_breakdown = [consumertech, induenv, ag, foodag, pharma, defense]
 size_breakdown = [under20, under100, under1000, under100000]
 type_risk_breakdown = [proteinexp/100, hetbiosynth/100, celllineopt/100, microbiome/100, livingtherapy/100]
 
-
-simulate = st.sidebar.button("SIMULATE")
 
 if simulate:
     ginkgo_customer_generator(1, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff, type_risk_breakdown, organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus)
