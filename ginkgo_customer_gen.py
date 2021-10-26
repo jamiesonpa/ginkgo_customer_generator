@@ -403,7 +403,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 if failurecount > 10:
                     failurecount = 9
                 randomrating = (random.randint(totalfailurecount*2,1000)/10) * (1-(failurecount/failure_risk_modulus))
-                #st.write("simulating phase 1 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
+                st.write("simulating phase 1 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
                 if randomrating > overall_risk_num:
                     years = years + .5
                     st.write("Project year 1 successful. Project time elapsed = " +str(years*12) + " months...")
@@ -414,7 +414,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     years = years+.5
                     failurecount+=1
                     totalfailurecount +=1
-                    #st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
+                    st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
                 if totalfailurecount > 20:
                     break
             
@@ -424,7 +424,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 if failurecount > 10:
                     failurecount = 9
                 randomrating = (random.randint(totalfailurecount*2,1000)/10) * (1-(failurecount/failure_risk_modulus))
-                #st.write("simulating phase 2 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
+                st.write("simulating phase 2 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
 
                 if randomrating > overall_risk_num:
                     years = years + .5
@@ -434,7 +434,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     years = years+.5
                     failurecount +=1
                     totalfailurecount +=1
-                    #st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
+                    st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
                 if totalfailurecount > 20:
                     break
                     
@@ -448,7 +448,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 st.write("This project completely failed resulting in " + str(years*12) + " months of wasted time")
 
             if projectfailure == False:
-                st.write("Ginkgo delivered on their milestones and customer specifications.")
+                st.write("Ginkgo delivered on their milestones and customer specifications!")
                 #if it is a midcap company, we'll say there is a 50% chance that Ginkgo negotiated an equity agreement and 50% chance they negotiated cash
                 cashonly = False
                 if size_risk == 1.1:
@@ -480,7 +480,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                         st.write("This company rolled high enough to not fail as a startup!")
                         cagr_negative = False
                     else:
-                        st.write("Unfortunately, this startup failed before reaching 6 years.")
+                        st.write("Unfortunately, this startup will fail before it's 6th year of existence.")
                         cagr_negative = True
                     if cagr_negative == False:
                         cagr = random.randint(0,50)/100
@@ -493,34 +493,34 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     total_equity_compensations.append((equity_comp,cagr))
 
             st.write("-----------------------SIMULATION COMPLETE-------------------")
-            customer_data = []
-            customer_data.append(name)
-            customer_data.append(industry)
-            customer_data.append("{:,}".format(size))
-            if projectfailure == True:
-                customer_data.append("FAIL")
-            else:
-                customer_data.append("SUCCESS")
-            customer_data.append(str(years*12))
-            customer_data.append(project[1])
-            customer_data.append(organism["name"])
-            customer_data.append(str(organism["diffrisk"])+"%")
-            customer_data.append(overall_risk)
-            counter+=1
-            customer_results.append(customer_data)
+            # customer_data = []
+            # customer_data.append(name)
+            # customer_data.append(industry)
+            # customer_data.append("{:,}".format(size))
+            # if projectfailure == True:
+            #     customer_data.append("FAIL")
+            # else:
+            #     customer_data.append("SUCCESS")
+            # customer_data.append(str(years*12))
+            # customer_data.append(project[1])
+            # customer_data.append(organism["name"])
+            # customer_data.append(str(organism["diffrisk"])+"%")
+            # customer_data.append(overall_risk)
+            # counter+=1
+    #         customer_results.append(customer_data)
     
-    equity = 0
-    wcagrsum = 0
-    for equitypayment in total_equity_compensations:
-        equity = equity + equitypayment[0]
-        wcagrsum = wcagrsum + (equitypayment[0] * equitypayment[1])
-
-    wcagrav = wcagrsum /len(total_equity_compensations)
-    wcagr = wcagrav/equity
-
+    # st.write("This customer " + str(1) + " has resulted in a total of $" + str("{:,}".format(total_cash_payments))+" cash payments to Ginkgo.")
     
-    st.write("This cohort of " + str(1) + " Ginkgo customers has resulted in a total of $" + str("{:,}".format(total_cash_payments))+" cash payments.")
-    st.write("And a total of $" + str("{:,}".format(round(equity,2))) + " of equity which has a " +str((round(wcagr*100,2))) + "% CAGR.")
+    # if len(total_equity_compensations) > 0:
+    #     equity = 0
+    #     wcagrsum = 0
+    #     for equitypayment in total_equity_compensations:
+    #         equity = equity + equitypayment[0]
+    #         wcagrsum = wcagrsum + (equitypayment[0] * equitypayment[1])
+
+    #     wcagrav = wcagrsum /len(total_equity_compensations)
+    #     wcagr = wcagrav/equity
+    #     st.write("This customer has awarded Ginkgo $" + str("{:,}".format(round(equity,2))) + " of equity which has a " +str((round(wcagr*100,2))) + "% CAGR.")
 
 
 
@@ -611,21 +611,21 @@ livingtherapy = st.sidebar.slider(label = "Living Therapy Product Development", 
 
 
 st.sidebar.caption("Define a risk associated with the size of the company. This should be a number between 0 and 1 which represents the risk associated with a smaller company. In other words, for two companies requesting the same project what do we estimate is the biggest increase in overall risk % associated with that smaller size due to resource constraints, default risk, lack of track record, etc. By defualt, I'll estimate that its 20% more risky to take on a smaller company as a partner compared to a larger company, so in that case I would set this to be 0.2.")
-sizerisk_coeff  = st.sidebar.slider(label = "Size Risk Coefficient", min_value = 0.0, max_value=1.0, value =defsizerisk_coeff, step=0.01)
+sizerisk_coeff  = st.sidebar.slider(label = "Size Risk Coefficient", min_value = 0.01, max_value=1.0, value =defsizerisk_coeff, step=0.01)
 
 
 st.sidebar.caption("let's assume that https://www.failory.com/blog/startup-failure-rate 60% of startups fail within the first five years if that is the case, then we can use that as the base case for whether the startup will fail or not and reduce from there based on 1. the fact that Ginkgo is lending this startup its resources, and 2. that Ginkgo has vetted this team's leadership and product potential itself with that in mind, define a coefficient to multiply this 45% by that will represent the risk reduction relative to a general startup caused by the association with Ginkgo")
-startup_risk_coeff  = st.sidebar.slider(label = "Startup Risk Coefficient", min_value = 0.0, max_value=1.0, value =defstartup_risk_coeff, step=0.01)
+startup_risk_coeff  = st.sidebar.slider(label = "Startup Risk Coefficient", min_value = 0.01, max_value=1.0, value =defstartup_risk_coeff, step=0.01)
 
 st.sidebar.caption("we have already decided a difficulty risk associated with each organism, but we should also add an input to determine how much weight the user would like to simulate organism difficulty as part of the simulation. We default to 1")
-organism_difficulty_scalar  = st.sidebar.slider(label = "Organism Difficulty Scalar", min_value = 0.0, max_value=10.0, value =deforganism_difficulty_scalar, step=0.01)
+organism_difficulty_scalar  = st.sidebar.slider(label = "Organism Difficulty Scalar", min_value = 0.01, max_value=10.0, value =deforganism_difficulty_scalar, step=0.01)
 
 
 st.sidebar.caption("if the customer is a returning customer, we would like to know, because that will change the risks associated. We want to define a probability that the customer is a returning customer, and we will default that to 30%")
-returning_customer_prob  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0.0, max_value=1.0, value =defreturning_customer_prob, step=0.01)
+returning_customer_prob  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0.01, max_value=1.0, value =defreturning_customer_prob, step=0.01)
 
 st.sidebar.caption("also indicate the associated reduction of total risk with returning customers")
-returning_customer_risk_reduction_coeff  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0.0, max_value=1.0, value =defreturning_customer_risk_reduction_coeff, step=0.01)
+returning_customer_risk_reduction_coeff  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0.01, max_value=1.0, value =defreturning_customer_risk_reduction_coeff, step=0.01)
 
 
 
