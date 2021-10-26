@@ -323,7 +323,7 @@ def generate_project(industry, size,type_risk_breakdown):
     project = [organism_choice, project_type, project_type_risk]
     return project
 
-def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff,type_risk_breakdown,organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff):
+def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff,type_risk_breakdown,organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus):
 
     total_cash_payments = 0
     total_equity_compensations = []
@@ -389,7 +389,6 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
         overall_risk = str(round((((project[2] + adjusted_organism_difficulty_risk)/2)*returning_customer_risk_coefficient*size_risk*industry_risk),2))+"%"
         st.write("This project has approximately a " + overall_risk + " overall risk of failure.\n")
 
-        failure_risk_modulus = 1
         simready = "y"
         # simready = input("Ready to simulate? (y/n):\n>")
         if simready.lower() == "y":
@@ -591,6 +590,10 @@ defreturning_customer_prob = .3
 
 defreturning_customer_risk_reduction_coeff = .66
 
+#we also define a failure risk modulus which is a number between 1 and 20 that represents how likely it is that failed project iterations lead to more failed project iterations.
+#the higher this number is, the less likely it is that failed iterations indicate that the project is probably going to fail overall
+
+deffailure_risk_modulus = 1
 
 st.title("Ginkgo Customer Generator")
 
@@ -634,6 +637,8 @@ returning_customer_prob  = st.sidebar.slider(label = "Returning Customer Probabi
 st.sidebar.caption("also indicate the associated reduction of total risk with returning customers")
 returning_customer_risk_reduction_coeff  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0.01, max_value=1.0, value =defreturning_customer_risk_reduction_coeff, step=0.01)
 
+st.sidebar.caption("we also define a failure risk modulus which is a number between 1 and 20 that represents how likely it is that failed project iterations lead to more failed project iterations. The higher this number is, the less likely it is that failed iterations indicate that the project is probably going to fail overall")
+failure_risk_modulus  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 1, max_value=20, value =deffailure_risk_modulus)
 
 
 industry_breakdown = [consumertech, induenv, ag, foodag, pharma, defense]
