@@ -465,13 +465,13 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 st.write("Ginkgo delivered on their milestones and customer specifications!")
                 #if it is a midcap company, we'll say there is a 50% chance that Ginkgo negotiated an equity agreement and 50% chance they negotiated cash
                 cashonly = False
-                if size < 100000000:
+                if size < 200000000:
                     if size > 20000000:
                         cashchanceint = random.randint(1,100)
-                        if cashchanceint > 50:
+                        if cashchanceint > 25:
                             cashonly = True
                 #if it is a largecap company, we'll say there is a 50% chance that Ginkgo negotiated an equity agreement and 50% chance they negotiated cash
-                elif size > 100000000:
+                elif size > 200000000:
                     cashonly = True
                 else:
                 #if it is a micro/small cap company, its a 0% chance that the negotiated revenue is cash.
@@ -483,11 +483,11 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     if size < 100000000:
                         cash_payment = (((random.randint(1,100)/100 * 5000000) + 10000000))
                         if cash_payment > (0.15*size):
-                            cash_payment = 0.1 *size
+                            cash_payment = 0.2 *size
                     if size > 100000000:
                         cash_payment = (random.randint(1,100)/100 * 5000000) + 20000000
                         if cash_payment > (0.15*size):
-                            cash_payment = (0.1*size)
+                            cash_payment = (0.2*size)
                     else:
                         cash_payment = 0.1*size
                     total_cash_payments = total_cash_payments + (cash_payment)
