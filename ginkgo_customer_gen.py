@@ -427,6 +427,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     st.write("-----\n")
                     y1successful = True
                     failurecount = 0
+                    break
                 else:
                     years = years+.5
                     failurecount+=1
