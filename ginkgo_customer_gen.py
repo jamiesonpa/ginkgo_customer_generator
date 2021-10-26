@@ -1,6 +1,7 @@
 from os import write
 import random
 import time
+from termcolor import colored
 import streamlit as st
 
 
@@ -76,16 +77,18 @@ def generate_name():
         lastnames = ["Adams","Adams","Murphy","Murphy","Phillips","Phillips","Martin","Martin","Anderson","Anderson","Lee","Lee","Jackson","Jackson","Bell","Bell","Myers","Myers","White","White","Stewart","Stewart","Clark","Clark","Harris","Harris","Perry","Perry","Bailey","Bailey","Watson","Watson","Nelson","Nelson","King","King","Sanders","Sanders","Young","Young","Butler","Butler","Walker","Walker","Davis","Davis","Roberts","Roberts","Green","Green","Hall","Hall","Carter","Carter","Miller","Miller","Morris","Morris","Cox","Cox","Parker","Parker","Reed","Reed","Cooper","Cooper","Rogers","Rogers","Collins","Collins","Moore","Moore","Wood","Wood","Richardson","Richardson","Barnes","Barnes","Smith","Smith","Powell","Powell","Peterson","Peterson","Wilson","Wilson","Lewis","Lewis","Morgan","Morgan","Robinson","Robinson","Turner","Turner","Campbell","Campbell","Hughes","Hughes","Ward","Ward","Cook","Cook","Mitchell","Mitchell","Taylor","Taylor","Wright","Wright","Johnson","Johnson","Bennett","Bennett","Allen","Allen","Jones","Jones","Brooks","Brooks","Fisher","Fisher","Brown","Brown","Thomas","Thomas","Hill","Hill","Price","Price","Scott","Scott","Edwards","Edwards","Ross","Ross","Gray","Gray","Kelly","Kelly","Russell","Russell","Sullivan","Sullivan","Evans","Evans","Baker","Baker","Thompson","Thompson","Jenkins","Jenkins","Williams","Williams","Howard","Howard","Foster","Foster","James","James","Sheridan","Sheridan","Abbott","Abbott","Nicholls","Nicholls","Curtis","Curtis","Nicholas","Nicholas","Thomson","Thomson","Brooke","Brooke","Emery","Emery","Berry","Berry","Bob","Bob","Millard","Millard","Bond","Bond","Fuller","Fuller","Jarvis","Jarvis","Samuel","Samuel","Flynn","Flynn","Boyd","Boyd","Black","Black","Forrest","Forrest","Wade","Wade","Charlton","Charlton"]
         lastname1 = random.choice(lastnames)
         lastname2 = random.choice(lastnames)
-        random_name = lastname1 + " & " + lastname2
+        colors = ["red","green","blue","yellow","cyan", "magenta"]
+        random_name = colored((lastname1 + " & " + lastname2), random.choice(colors))
         return random_name
 
 def generate_description(name, industry):
     #pharma
+    colors = ["red","green","blue","yellow","cyan", "magenta"]
     if industry == "Biopharma":
         diseases = ["Acromegaly","Addison disease","Adult respiratory distress syndrome (ARDS)","AIDS","ALS (Amyotrophic lateral sclerosis)","Amyloidosis","Anemia","Iron deficiency","B12 and folate deficiency","Aplastic","myelopthisic","Thalassemia","Sickle Cell","Hemolytic – RH factor","Spherocytosis","Aneurysms","Ankylosing spondylitis (HLA B27)","Arteritis","Giant cell","Polyarteritis nodosa","Takayasu","Hypersensitivity","Arthritis","Asthma","Atherosclerosis","Autoimmune disease","Systemic Lupus Erythmetosus","Sjögren syndrome","Dermatomyositis","Scleroderma","Bleeding disorders","Hemophilia","von Willebrand disease","Thrombocytopenia","Henoch-Schοnlein purpura","Brain edema and herniation","Breast diseases","Fibrocystic change","Fibroadenoma","Mastitis","Bronchiectasis","Calcium-phosphate homeostasis","Cardiomyopathy","Celiac disease","Cholecystitis/lithiasis","Cirrhosis","Congenital heart disease","COPD","Emphysema","Chronic bronchitis","Pneumoconioses","Bronchiolitis obliterans (BOOP)","Coronary Heart Disease","Angina","Creutzfeldt-Jakob disease","Crohn disease","Cushing syndrome","Cystic fibrosis","Dementia","Alzheimer's Diseease","Dermatitis","Dermatomycoses","Diabetes insipidus","Diabetes mellitus","Diarrhea","Disseminated intravascular coagulation","Diverticular disease of G.I. tract","Dyslipoproteinemia","Familial hypercholesterolemia","Dysphagia","Achalasia","Barrett esophagus","Eczema","Encephalitis","Endocarditis","Libbman-Sacks","Enterocolitis","Epilepsy","Erythema multiforme","Esophagitis","Fungal infection","Candidiasis","Aspergillosis","Histoplasmosis","Cryptococcosis","Coccidioidomycosis","Glaucoma","Glomerulonephritis","Gout","Graves disease","Growth abnormalities","Dwarfism","Gigantism","Guillain-Barre Syndrome","Hemochromatosis","Hepatitis","Hodgkin disease","Hydrocephalus","Hypertension","Hypogonadism","Turner syndrome","Klinefelter syndrome","Immune diseases of liver","Autoimmune hepatitis","Infectious mononucleosis","Infertility","Intracranial hemorrhage","Kidney diseases","Leukemia","Lyme disease","Lymphoma","Malabsorption syndromes","Malaria","Meningitis","Multiple myeloma","Multiple sclerosis","Muscular dystrophy","Myasthenia gravis","Myeloproliferative disorders","Myocarditis","Myositis","Dermatomyositis","Polymyositis","Infectious myositis","Nephropathy, peripheral","Obstructive","Interstitial","Amyloid related","Infectious","Neuroblastoma","Neuropathy","Obesity","Osteoarthritis","Otitis media","Ovarian dysfunction","Cysts","Premature ovarian failure","Paget disease of bone","Pancreatitis","Parkinson disease","Pericarditis","Pericardial tamponade","Pharyngitis","Pheochromocytoma","Platelet disorders","Thrombocytopenia","Thrombasthenia","Polycystic kidney disease","Potassium homeostasis disorders","Psoriasis","Pyelonephritis","Renal failure","Retinal diseases","Retinoblastoma","Rheumatic fever","Rheumatoid arthritis","Sarcoidosis","Sepsis","Sexually transmitted diseases","Sodium homeostasis diseases","Spinal cord disease","Trauma","Demyelinating diseases","Polyomyelitis","Spongiform encephalopathies","Syphilis","Systemic lupus erythematosus","Systemic sclerosis (scleroderma)","Thrombosis","Embolism","Hypo/hyper function","Thyroiditis","Toxic shock syndrome","Tranfusion complications","Transplantation","Tuberculosis"]
         terms0 = ["ultracompact ","L-enantiomeric ","R-enantiomeric ","novel mode-of-action ","clinically-tested ","immunogenic ","tumor-infiltrating ","","",""]
         terms1 = ["antisense oligos", "vaccine adjuvants","aptamers","vaccines","gene-therapies","lipid nanoparticles","virus-like particles","monoclonal antibodies", "protein kinase inhibitors", "naturally occuring immunosuppressive molecules", "viral coat proteins","antimicrobial peptides","small molecule therapeutics"]
-        description = name + " is a company known for manufacturing " +random.choice(terms0) + random.choice(terms1) + " for the treatment of " + random.choice(diseases).lower() + ". However, they would like to begin manufacturing these therapeutics on a cellular platform."
+        description = name + " is a company known for manufacturing " + colored((random.choice(terms0)+ random.choice(terms1)),random.choice(colors)) + " for the treatment of " + colored(random.choice(diseases).lower(),random.choice(colors)) + ". However, they would like to begin manufacturing these therapeutics on a cellular platform."
 
     #indu/env
 
@@ -356,8 +359,8 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
         
 
         #simulate the customer
-        st.write("\n\n-----------------------SIMULATED CUSTOMER #" + str(counter+1)+"--------------------")
-        st.write(name + " is a company in the " + industry + " industry. This company has a $" + "{:,}".format(size) + " market capitalization.\n")
+        st.write("\n\n-----------------------BEGIN CUSTOMER SIMULATION" + str(counter+1)+"--------------------")
+        st.write(name + " is a company in the " + industry + " industry with a $" + "{:,}".format(size) + " market capitalization.\n")
 
         #here, we associate a risk with the size of the company. This is because companies which have fewer resources are less likely to be capable of scaling up the 
         #downstream application
