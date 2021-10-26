@@ -535,7 +535,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
     wcagr = wcagrav/equity
 
     
-    st.write("This cohort of " + str(number_to_gen) + " Ginkgo customers has resulted in a total of $" + str("{:,}".format(total_cash_payments))+" cash payments.")
+    st.write("This cohort of " + str(1) + " Ginkgo customers has resulted in a total of $" + str("{:,}".format(total_cash_payments))+" cash payments.")
     st.write("And a total of $" + str("{:,}".format(round(equity,2))) + " of equity which has a " +str((round(wcagr*100,2))) + "% CAGR.")
 
 
@@ -631,17 +631,17 @@ sizerisk_coeff  = st.sidebar.slider(label = "Size Risk Coefficient", min_value =
 
 
 st.sidebar.caption("let's assume that https://www.failory.com/blog/startup-failure-rate 60% of startups fail within the first five years if that is the case, then we can use that as the base case for whether the startup will fail or not and reduce from there based on 1. the fact that Ginkgo is lending this startup its resources, and 2. that Ginkgo has vetted this team's leadership and product potential itself with that in mind, define a coefficient to multiply this 45% by that will represent the risk reduction relative to a general startup caused by the association with Ginkgo")
-startup_risk_coeff  = st.sidebar.slider(label = "Startup Risk Coefficient", min_value = 0, max_value=1, value =defstartup_risk_coeff, step=0.01)
+startup_risk_coeff  = st.sidebar.slider(label = "Startup Risk Coefficient", min_value = 0.0, max_value=1.0, value =defstartup_risk_coeff, step=0.01)
 
 st.sidebar.caption("we have already decided a difficulty risk associated with each organism, but we should also add an input to determine how much weight the user would like to simulate organism difficulty as part of the simulation. We default to 1")
-organism_difficulty_scalar  = st.sidebar.slider(label = "Organism Difficulty Scalar", min_value = 0, max_value=10, value =deforganism_difficulty_scalar, step=0.01)
+organism_difficulty_scalar  = st.sidebar.slider(label = "Organism Difficulty Scalar", min_value = 0.0, max_value=10.0, value =deforganism_difficulty_scalar, step=0.01)
 
 
 st.sidebar.caption("if the customer is a returning customer, we would like to know, because that will change the risks associated. We want to define a probability that the customer is a returning customer, and we will default that to 30%")
-returning_customer_prob  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0, max_value=1, value =defreturning_customer_prob, step=0.01)
+returning_customer_prob  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0.0, max_value=1.0, value =defreturning_customer_prob, step=0.01)
 
 st.sidebar.caption("also indicate the associated reduction of total risk with returning customers")
-returning_customer_risk_reduction_coeff  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0, max_value=1, value =defreturning_customer_risk_reduction_coeff, step=0.01)
+returning_customer_risk_reduction_coeff  = st.sidebar.slider(label = "Returning Customer Probability", min_value = 0.0, max_value=1.0, value =defreturning_customer_risk_reduction_coeff, step=0.01)
 
 
 
