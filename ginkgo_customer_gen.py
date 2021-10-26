@@ -328,7 +328,7 @@ def generate_project(industry, size,type_risk_breakdown):
     project = [organism_choice, project_type, project_type_risk]
     return project
 
-def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff,type_breakdown,organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus):
+def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff,type_breakdown,organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus, verbose):
 
     intellectual_property_points_accumulated = 0
     total_cash_payments = 0
@@ -419,7 +419,8 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 if failurecount > 10:
                     failurecount = 9
                 randomrating = (random.randint(totalfailurecount*2,1000)/10) * (1-(failurecount/failure_risk_modulus))
-                st.write("simulating phase 1 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
+                if verbose == True:
+                    st.write("simulating phase 1 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
                 if randomrating > overall_risk_num:
                     years = years + .5
                     st.write("Project year 1 successful. Project time elapsed = " +str(years*12) + " months...")
@@ -430,7 +431,8 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     years = years+.5
                     failurecount+=1
                     totalfailurecount +=1
-                    st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
+                    if verbose == True:
+                        st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
                 if totalfailurecount > 20:
                     break
             
@@ -440,7 +442,8 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 if failurecount > 10:
                     failurecount = 9
                 randomrating = (random.randint(totalfailurecount*2,1000)/10) * (1-(failurecount/failure_risk_modulus))
-                st.write("simulating phase 2 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
+                if verbose == True:
+                    st.write("simulating phase 2 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
 
                 if randomrating > overall_risk_num:
                     years = years + .5
@@ -450,7 +453,8 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     years = years+.5
                     failurecount +=1
                     totalfailurecount +=1
-                    st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
+                    if verbose == True:
+                        st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
                 if totalfailurecount > 20:
                     break
                     
@@ -625,6 +629,11 @@ st.title("Ginkgo Customer Generator v0.1")
 simulate = st.sidebar.button("SIMULATE")
 st.sidebar.caption("Press this button to simulate a random Ginkgo customer project using the inputs below.")
 
+
+defverbosity = False
+verbose = st.sidebar.checkbox("Verbose?", value = defverbosity, help = "Check this box if you would like to display simulation rolls and more verbose output.")
+
+
 st.sidebar.header("Inputs:\n")
 st.sidebar.subheader("Customer Type Composition (must add up to 100)")
 consumertech = st.sidebar.slider(label = "Consumer Tech%", min_value = 0, max_value=100, value =defconsumertech)
@@ -670,6 +679,7 @@ size_breakdown = [under20, under100, under1000, under100000]
 type_risk_breakdown = [defproteinexp/100, defhetbiosynth/100, defcelllineopt/100, defmicrobiome/100, deflivingtherapy/100]
 
 
+
 if simulate:
-    ginkgo_customer_generator(numbergen, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff, type_risk_breakdown, organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus)
+    ginkgo_customer_generator(numbergen, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff, type_risk_breakdown, organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus, verbose)
 
