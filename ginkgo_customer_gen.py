@@ -388,6 +388,14 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
         st.write("The project is your basic " + specs.lower() + " type of thing. These kinds of projects have an associated " + str(round(project_risk*100,2)) + '%' + " failure risk. \n")   
 
         overall_risk_num = (((project_risk + adjusted_organism_difficulty_risk)/2)*returning_customer_risk_coefficient*size_risk*industry_risk)
+
+        st.write("project risk: " + str(project_risk))
+        st.write("adj_organism diff risk: " + str(adjusted_organism_difficulty_risk))
+        st.write("returning_customer_risk_coefficient: " + str(returning_customer_risk_coefficient))
+        st.write("size risk: " + str(size_risk))
+        st.write("industry risk: " + str(industry_risk))
+
+
         risk_display_num = 1-overall_risk_num
                 
         overall_risk = str((round(risk_display_num*100,2)))+"%"
