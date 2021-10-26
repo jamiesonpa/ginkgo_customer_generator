@@ -330,6 +330,7 @@ def generate_project(industry, size,type_risk_breakdown):
 
 def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff,type_breakdown,organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus):
 
+    intellectual_property_points_accumulated = 0
     total_cash_payments = 0
     total_equity_compensations = []
     customer_results = []
@@ -460,9 +461,12 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
             else:
                 projectfailure = True
                 st.write("This project completely failed resulting in " + str(years*12) + " months of wasted time")
+                intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk/4
 
             if projectfailure == False:
                 st.write("Ginkgo delivered on their milestones and customer specifications!")
+                intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk
+
                 #if it is a midcap company, we'll say there is a 50% chance that Ginkgo negotiated an equity agreement and 50% chance they negotiated cash
                 cashonly = False
                 if size < 200000000:
@@ -520,6 +524,8 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     total_equity_compensations.append((equity_comp,cagr))
 
             st.write("-----------------------SIMULATION COMPLETE-------------------")
+            st.write("Total intellectual property points accumulated: " + str(round(intellectual_property_points_accumulated,2)))
+            st.write("Total cash accumulated $" + str("{:,}".format(round(total_cash_payments,2))))
             # customer_data = []
             # customer_data.append(name)
             # customer_data.append(industry)
@@ -653,6 +659,10 @@ returning_customer_risk_reduction_coeff  = st.sidebar.slider(label = "Returning 
 st.sidebar.caption("we also define a failure risk modulus which is a number between 1 and 20 that represents how likely it is that failed project iterations lead to more failed project iterations. The higher this number is, the less likely it is that failed iterations indicate that the project is probably going to fail overall")
 failure_risk_modulus  = st.sidebar.slider(label = "Failure Risk Modulus", min_value = 1, max_value=20, value =deffailure_risk_modulus)
 
+defnumbergen = 1
+st.sidebar.caption("specify how many companies you would like to simulate in this run")
+numbergen  = st.sidebar.slider(label = "Customers to generate", min_value = 1, max_value=1000, value =defnumbergen)
+
 
 industry_breakdown = [consumertech, induenv, ag, foodag, pharma, defense]
 size_breakdown = [under20, under100, under1000, under100000]
@@ -660,4 +670,5 @@ type_risk_breakdown = [defproteinexp/100, defhetbiosynth/100, defcelllineopt/100
 
 
 if simulate:
-    ginkgo_customer_generator(1, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff, type_risk_breakdown, organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus)
+    ginkgo_customer_generator(numbergen, industry_breakdown, size_breakdown, sizerisk_coeff, startup_risk_coeff, type_risk_breakdown, organism_difficulty_scalar,returning_customer_prob, returning_customer_risk_reduction_coeff,failure_risk_modulus)
+
