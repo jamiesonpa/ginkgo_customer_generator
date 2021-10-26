@@ -401,6 +401,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
 
 
         risk_display_num = overall_risk_num/100
+        overall_risk_percent = round(risk_display_num*100,2)
                 
         overall_risk = str((round(risk_display_num*100,2)))+"%"
         st.write("This project has approximately a " + overall_risk + " per-iteration failure risk.\n")
@@ -461,11 +462,11 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
             else:
                 projectfailure = True
                 st.write("This project completely failed resulting in " + str(years*12) + " months of wasted time")
-                intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk/4
+                intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk_percent/4
 
             if projectfailure == False:
                 st.write("Ginkgo delivered on their milestones and customer specifications!")
-                intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk
+                intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk_percent
 
                 #if it is a midcap company, we'll say there is a 50% chance that Ginkgo negotiated an equity agreement and 50% chance they negotiated cash
                 cashonly = False
