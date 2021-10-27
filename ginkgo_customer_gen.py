@@ -424,9 +424,8 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 if randomrating > overall_risk_num:
                     years = years + .5
                     st.write("Project year 1 successful. Project time elapsed = " +str(years*12) + " months...")
-                    st.write("-----\n")
-                    y1successful = True
                     failurecount = 0
+                    y1successful = True
                 else:
                     years = years+.5
                     failurecount+=1
@@ -456,10 +455,10 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     if verbose == True:
                         st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
                 if totalfailurecount > 20:
+                    projectfailure = True
                     break
                     
             if y1successful:
-                projectfailure = True
                 if y2successful:
                     projectfailure = False
                     st.write("Project successfully completed in " + str(years*12) + " months.")
