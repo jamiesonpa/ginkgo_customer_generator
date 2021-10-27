@@ -409,7 +409,6 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
         simready = "y"
         # simready = input("Ready to simulate? (y/n):\n>")
         if simready.lower() == "y":
-            st.write("Simulating project with " + name +", attempting to do " + project[1] + " in " + organism["name"])
             y1successful = False
             y2successful = False
             years = 1
