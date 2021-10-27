@@ -415,10 +415,10 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
             totalfailurecount = 0
             failurecount = 0
             projectfailure = False
+            st.write("Simulating project with " + name +", attempting to do " + project[1] + " in " + organism["name"])
+
 
             while projectfailure == False:
-                st.write("Simulating project with " + name +", attempting to do " + project[1] + " in " + organism["name"])
-
                 while y1successful == False:
                     randomrating = (random.randint(totalfailurecount*(10-failure_risk_modulus),1000)/10) * (1-(failurecount/failure_risk_modulus))
                     if verbose == True:
