@@ -530,6 +530,8 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                     equity_comp = size*.15
                     st.write("This company has compensated Ginkgo for its services with $" + str("{:,}".format((round(size*.15,2)))) + " worth of its equity, which has a " + str(round((cagr*100),2)) + r"% CAGR")
                     total_equity_compensations.append((equity_comp,cagr))
+                else:
+                    break
 
             st.write("-----------------------SIMULATION COMPLETE-------------------")
             st.write("Total intellectual property points accumulated: " + str(round(intellectual_property_points_accumulated,2)))
