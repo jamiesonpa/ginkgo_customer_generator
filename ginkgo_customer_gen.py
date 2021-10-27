@@ -451,6 +451,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                         years = years + .5
                         st.write("Project year 2 objectives successful. Project time elapsed = " +str(years*12) + " months...")
                         y2successful = True
+                        break
                     else:
                         years = years+.5
                         failurecount +=1
