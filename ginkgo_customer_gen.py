@@ -630,7 +630,7 @@ deffailure_risk_modulus = 3
 
 st.title("Ginkgo Customer Generator v0.1")
 
-st.sidebar.logo(ark_logo_string)
+st.sidebar.image(ark_logo_string)
 
 st.sidebar.caption("Disclosure: This is a toy that randomly generates fictional companies that might be customers for Ginkgo Bioworks. The companies are not real, and the output is not indicative of ARK's estimation of Ginkgo's actual capabilities or success rates. This is meant for entertainment purposes only.")
 
