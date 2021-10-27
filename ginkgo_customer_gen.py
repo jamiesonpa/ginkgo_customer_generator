@@ -419,8 +419,9 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
 
 
             while projectfailure == False:
+                
                 while y1successful == False:
-                    randomrating = (random.randint(totalfailurecount*(10-failure_risk_modulus),1000)/10) * (1-(failurecount/failure_risk_modulus))
+                    randomrating = (random.randint(0,1000)/10)
                     if verbose == True:
                         st.write("simulating phase 1 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
                     if randomrating > overall_risk_num:
@@ -444,7 +445,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 while y2successful == False:
                     if failurecount > 10:
                         failurecount = 10
-                    randomrating = (random.randint(totalfailurecount*(10-failure_risk_modulus),1000)/10) * (1-(failurecount/failure_risk_modulus))
+                    randomrating = (random.randint(0,1000)/10)
                     if verbose == True:
                         st.write("simulating phase 2 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
                     if randomrating > overall_risk_num:
