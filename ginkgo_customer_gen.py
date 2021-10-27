@@ -5,6 +5,8 @@ import streamlit as st
 import math
 
 
+ark_logo_string =r'ark_logo_string =r"<?xml version="1.0" encoding="utf-8"?><!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 537 202" style="enable-background:new 0 0 537 202;" xml:space="preserve"><g><path d="M103.4,188.3V105l72.2,41.7C160.4,171,133.8,187.4,103.4,188.3 M25.9,146.6l72.2-41.7v83.4C67.6,187.4,41,171,25.9,146.6 M92.8,12.7l-70.3,128c-6.3-12.1-9.8-25.8-9.8-40.3C12.7,54.5,48,16.8,92.8,12.7 M175.5,54.1l-59,34.1c6.7-9.8,10.4-21.4,10.4-33.5c0-16-6.2-30.8-17.2-41.9C137.5,15.6,161.5,31.5,175.5,54.1 M178.2,58.7c6.7,12.4,10.5,26.6,10.5,41.7c0,15.1-3.8,29.3-10.5,41.7L106,100.4L178.2,58.7z M98.1,98.8L30,138.1l68.1-124V98.8z M103.4,95.2V14.1C115,24.4,121.6,39,121.6,54.7C121.6,70.2,114.9,85,103.4,95.2 M100.7,7.1c-51.5,0-93.3,41.9-93.3,93.3s41.9,93.3,93.3,93.3s93.3-41.9,93.3-93.3S152.2,7.1,100.7,7.1"/><path d="M470.2,182.1c0,5-4.9,7.9-11.4,7.9c-5.4,0-10.5-1.8-13.7-3.4v5.2c3.1,1.4,8.3,2.9,14,2.9c9.6,0,16.2-4.8,16.2-12.9c0-7.2-4.1-11.2-14-14.6c-8.8-3.2-11.2-6.3-11.2-10.7c0-4.8,4.6-7.9,10.9-7.9c4.4,0,9.1,1.5,11.8,2.9v-5.1c-2.6-1.2-7-2.5-12-2.5c-8.8,0-15.8,4.7-15.8,12.8c0,7.1,4,11.3,13.8,14.8C467.5,174.4,470.2,177.1,470.2,182.1 M271.7,143.8L271.7,143.8l-0.1,50.1h5.2v-32.7c0-1.6-0.1-3-0.1-4.4c0.4,0.5,1,1.2,1.4,1.7l31.4,36.2h0.1v-50.1h-5.2v32.7c0,1.6,0.1,3,0.1,4.4l-1.4-1.7L271.7,143.8z M240.2,144.6H235v49.3h5.2V144.6z M301.4,78.3h-36.1c7-15.8,12.4-28.2,18.1-42.8C289,50.1,294.3,62.5,301.4,78.3 M316.6,112.6h14.6L283.6,7.5h-0.3l-47.7,105.1h14.7l10.1-23h46.1L316.6,112.6z M352.2,183.3c-2.3-5.7-4.6-10.7-7.3-16.9l-9.3-21.8h-5.6l22.1,50.1h0.1l22.2-50.1h-5.7l-9.3,21.8C356.8,172.6,354.6,177.6,352.2,183.3 M382.5,60.8h-20.4V20.8h19.2c14.4,0,23,7.5,23,20C404.3,53.3,396.2,60.8,382.5,60.8 M420.4,112.6L397,69.8c11.1-3.4,21.1-13.5,21.1-29c0-19.8-13.6-31.6-36.3-31.6h-33.5v103.4h13.8V72.1h21.5l21.4,40.5H420.4z M394.9,193.9h30.7v-4.4h-25.5v-18.3h20.7v-4.4h-20.7V149h24.5v-4.4h-29.7V193.9z M524,112.6l-38.6-61.9l38.1-41.5h-17.1l-49.3,55.3V9.2h-13.8v103.4h13.8V80.9l19-20.5l31.9,52.3H524z M528,149v-4.4h-35.5v4.4h15.1v44.9h5.2V149H528z"/></g></svg>"'
+
 def generate_size(size_breakdown):
 
     micro = size_breakdown[0]
@@ -627,6 +629,11 @@ defreturning_customer_risk_reduction_coeff = .66
 deffailure_risk_modulus = 3
 
 st.title("Ginkgo Customer Generator v0.1")
+
+st.sidebar.logo(ark_logo_string)
+
+st.sidebar.caption("Disclosure: This is a toy that randomly generates fictional companies that might be customers for Ginkgo Bioworks. The companies are not real, and the output is not indicative of ARK's estimation of Ginkgo's actual capabilities or success rates. This is meant for entertainment purposes only.")
+
 
 simulate = st.sidebar.button("SIMULATE")
 st.sidebar.caption("Press this button to simulate a random Ginkgo customer project using the inputs below.")
