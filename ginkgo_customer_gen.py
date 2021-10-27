@@ -415,63 +415,64 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
             years = 1
             totalfailurecount = 0
             failurecount = 0
-            while y1successful == False:
-                if failurecount > 10:
-                    failurecount = 9
-                randomrating = (random.randint(totalfailurecount*2,1000)/10) * (1-(failurecount/failure_risk_modulus))
-                if verbose == True:
-                    st.write("simulating phase 1 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
-                if randomrating > overall_risk_num:
-                    years = years + .5
-                    st.write("Project year 1 successful. Project time elapsed = " +str(years*12) + " months...")
-                    st.write("-----\n")
-                    y1successful = True
-                    failurecount = 0
-                    break
-                else:
-                    years = years+.5
-                    failurecount+=1
-                    totalfailurecount +=1
-                    if verbose == True:
-                        st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
-                if totalfailurecount > 25:
-                    projectfailure = True
-                    break
-            
-            while y2successful == False:
-                if failurecount > 10:
-                    failurecount = 9
-                randomrating = (random.randint(totalfailurecount*2,1000)/10) * (1-(failurecount/failure_risk_modulus))
-                if verbose == True:
-                    st.write("simulating phase 2 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
 
-                if randomrating > overall_risk_num:
-                    years = years + .5
-                    st.write("Project year 2 objectives successful. Project time elapsed = " +str(years*12) + " months...")
-                    y2successful = True
-                else:
-                    years = years+.5
-                    failurecount +=1
-                    totalfailurecount +=1
+            while projectfailure == False:
+                st.write("Simulating project with " + name +", attempting to do " + project[1] + " in " + organism["name"])
+
+                while y1successful == False:
+                    randomrating = (random.randint(totalfailurecount*(10-failure_risk_modulus),1000)/10) * (1-(failurecount/failure_risk_modulus))
                     if verbose == True:
-                        st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
-                if totalfailurecount > 20:
-                    break
-                    
+                        st.write("simulating phase 1 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
+                    if randomrating > overall_risk_num:
+                        years = years + .5
+                        st.write("Project year 1 successful. Project time elapsed = " +str(years*12) + " months...")
+                        failurecount = 0
+                        y1successful = True
+                    else:
+                        years = years+.5
+                        failurecount+=1
+                        totalfailurecount +=1
+                        if totalfailurecount > 20:
+                            break
+                        else:
+                            if verbose == True:
+                                st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
+
+
+                while y2successful == False:
+                    randomrating = (random.randint(totalfailurecount*(10-failure_risk_modulus),1000)/10) * (1-(failurecount/failure_risk_modulus))
+                    if verbose == True:
+                        st.write("simulating phase 2 iteration, roll was " + str(round(randomrating,0)) + " -- trying to beat " + str(round(overall_risk_num,0)))
+                    if randomrating > overall_risk_num:
+                        years = years + .5
+                        st.write("Project year 2 objectives successful. Project time elapsed = " +str(years*12) + " months...")
+                        y2successful = True
+                    else:
+                        years = years+.5
+                        failurecount +=1
+                        totalfailurecount +=1
+                        if verbose == True:
+                            st.write("Setback occured. Project time elapsed = " +str(years*12) + " months...")
+                    if totalfailurecount > 20:
+                        break
+
             if y1successful:
-                projectfailure = True
                 if y2successful:
-                    projectfailure = False
                     st.write("Project successfully completed in " + str(years*12) + " months.")
+                    intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk_percent
+                    st.write("Ginkgo delivered on their milestones and customer specifications!")
+                    projectfailure = False
+                else:
+                    st.write("This project completely failed resulting in " + str(years*12) + " months of wasted time")
+                    intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk_percent/4
+                    projectfailure = True
             else:
-                projectfailure = True
                 st.write("This project completely failed resulting in " + str(years*12) + " months of wasted time")
                 intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk_percent/4
+                projectfailure = True
+
 
             if projectfailure == False:
-                st.write("Ginkgo delivered on their milestones and customer specifications!")
-                intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk_percent
-
                 #if it is a midcap company, we'll say there is a 50% chance that Ginkgo negotiated an equity agreement and 50% chance they negotiated cash
                 cashonly = False
                 if size < 200000000:
