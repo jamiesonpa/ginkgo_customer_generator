@@ -462,15 +462,18 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
                 if y2successful:
                     projectfailure = False
                     st.write("Project successfully completed in " + str(years*12) + " months.")
+                else:
+                    projectfailure = True
             else:
                 projectfailure = True
+
+            if projectfailure == True:
                 st.write("This project completely failed resulting in " + str(years*12) + " months of wasted time")
                 intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk_percent/4
-
-            if projectfailure == False:
+            else:
                 st.write("Ginkgo delivered on their milestones and customer specifications!")
                 intellectual_property_points_accumulated = intellectual_property_points_accumulated + overall_risk_percent
-
+            
                 #if it is a midcap company, we'll say there is a 50% chance that Ginkgo negotiated an equity agreement and 50% chance they negotiated cash
                 cashonly = False
                 if size < 200000000:
