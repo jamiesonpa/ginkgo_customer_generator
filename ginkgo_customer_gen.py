@@ -415,6 +415,7 @@ def ginkgo_customer_generator(number_to_generate, industry_breakdown, size_break
             years = 1
             totalfailurecount = 0
             failurecount = 0
+            projectfailure = False
 
             while projectfailure == False:
                 st.write("Simulating project with " + name +", attempting to do " + project[1] + " in " + organism["name"])
