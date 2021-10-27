@@ -5,7 +5,7 @@ import streamlit as st
 import math
 
 
-ark_logo_string = r"https://github.com/jamiesonpa/ginkgo_customer_generator/raw/main/Screen%20Shot%202021-09-30%20at%209.39.31%20AM.png"
+ark_logo_string = r"https://github.com/jamiesonpa/ginkgo_customer_generator/raw/main/Screen%20Shot%202021-10-27%20at%204.01.50%20PM.png"
 def generate_size(size_breakdown):
 
     micro = size_breakdown[0]
